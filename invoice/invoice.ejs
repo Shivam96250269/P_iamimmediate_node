@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D9D9D9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice {
+            width: 80%;
+            margin: 20px auto;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 1px #D9D9D9;
+        }
+
+        .logo {
+            width: 295px;
+            height: 61px;
+            top: 87px;
+            left: 117px;
+        }
+
+        .status {
+            width: 214px;
+            height: 29px;
+            font-family: Inter;
+            font-size: 24px;
+            font-weight: 540;
+            line-height: 29px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #320073;
+            margin-top: 60px;
+        }
+
+        .close {
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .preview {
+            display: flex;
+            justify-content: center;
+            font-family: Inter;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 34px;
+            letter-spacing: 0em;
+            text-align: left;
+
+        }
+
+        .package {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price-table {
+            padding: 5px;
+            font-size: 12px;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .Booking-numner {
+            display: flex;
+            justify-content: center;
+            margin-top: -37px;
+            margin-bottom: -20px;
+        }
+
+        .booking-details {
+            display: flex;
+            justify-content: space-around;
+
+        }
+
+        .payment-details {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn button {
+            width: 266px;
+            height: 56px;
+            border-radius: 6px;
+            color: #fff;
+            background-color: #0A335B;
+            margin-top: 56px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .footer-table {
+            line-height: 0;
+        }
+
+        .colr {
+            background-color: #2E3C59;
+            color: white;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice">
+        <% subsData.map((item) => { %>
+           <% const startDate = new Date(item.subscriptionDate) %>
+           <% const endDate = new Date(item.planValidTill) %>
+           <% const formattedStartDate = startDate.toISOString().split('T')[0] %>
+           <% const formattedEndDate = endDate.toISOString().split('T')[0] %>
+
+        <div class="details">
+            <img class="logo" src="logo_2.svg" alt="Logo">
+            <a href="#"><img src="close-circle-line.png" alt="" width="20px" height="21px"></a>
+        </div>
+        <div class="preview">Preview</div>
+        <h2>Plan Details</h2>
+        <div class="package">
+            <div>
+                <p><strong>12 Months</strong> </p>
+                <p><%= formattedStartDate %> - <%= formattedEndDate %></p>
+                <p class="status">STATUS : BOOKED</p>
+            </div>
+            <div class="paragraph">
+                <h5>Description</h5>
+                <p>In today's global job market, regardless of<br> your location or industry,
+                     a strong emphasis on politeness<br> and manners is essential. These fundamental
+                      customs play a pivotal role in <br>job-seeking and hiring, helping individuals
+                       and organizations foster a <br>respectful and productive work environment.
+                        ..."
+                </p>
+            </div>
+            <div class="colr">
+                <table>
+                    <tr class="price-table">
+                        <td></td>
+                        <td>Rate</td>
+                        <td>Amount</td>
+                    </tr>
+                    <tr>
+                        <td>Actual Price</td>
+                        <td></td>
+                        <td>₹ 3,60,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td>15%</td>
+                        <td>&nbsp;&nbsp;₹ 60,000.00</td><!--&nbsp means space  -->
+
+                    </tr>
+                    <tr>
+                        <td>Tax Amount</td>
+                        <td>18%</td>
+                        <td>&nbsp;&nbsp;₹ 67,000.00</td>
+
+                    </tr>
+                </table>
+                <hr>
+                <table>
+                    <tr>
+                        <td>Payable Amount</td>
+                        <td> </td>
+                        <td>₹ 2,33,000.00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="Booking-numner">
+            <h3>Full Package</h3>
+        </div>
+        <hr>
+        <h2 class="colr">Booking Details</h2>
+        <div class="booking-details">
+            <div>
+                <p><strong>Rishav Raj</strong> </p>
+                <p><strong>Mobile</strong> </p>
+                <p>7234567777</p>
+            </div>
+            <div>
+                <p><strong>Age- </strong> 28 yrs</p>
+                <p><strong>Address</strong> </p>
+                <p>G-102, Lotus homz<br> near- shiv mandir, sai kunj<br> palam vihar, Haryana-201109</p>
+            </div>
+            <div>
+                <p style="margin-left:-150px;">rishavraj@gmail.com</p>
+                <p><strong>Company No.</strong> </p>
+                <p>723456777721</p>
+            </div>
+            <div>
+                <p> &nbsp;</p>
+                <p><strong>GST</strong> </p>
+                <p>Fr56777721</p>
+            </div>
+            <div>
+                <p>&nbsp;</p>
+                <p><strong>Relation</strong> </p>
+                <p>Self</p>
+            </div>
+            <div>
+                <p> &nbsp;</p>
+                <p><strong>Booking Date</strong> </p>
+                <p>2024/01/25</p>
+            </div>
+
+        </div>
+        <hr>
+
+        <h2 class="colr">Payment Details</h2>
+        <div class="payment-details">
+            <div class="footer-table">
+                <table>
+                    <tr>
+                        <td>
+                            <p><strong>Order ID </strong></p>
+                        </td>
+                        <td> O-76543</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Total Amount </strong> </p>
+                        </td>
+                        <td>₹ 3,60,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Amount Paid </strong> </p>
+                        </td>
+                        <td>₹ 3,60,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Amount Due </strong> </p>
+                        </td>
+                        <td>₹ 3,60,000.00</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="footer-table">
+                <table>
+                    <tr>
+                        <td>
+                            <p><strong>Payment Mode </strong> </p>
+                        </td>
+                        <td>Card payment</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Subscription Type </strong> </p>
+                        </td>
+                        <td>Package</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong>Transaction ID </strong> </p>
+                        </td>
+                        <td>Txn-1234567</td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+        <% }) %>
+    </div>
+</body>
+
+</html>

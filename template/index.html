@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+
+<body style="font-family: Inter; background-color: #fff; margin: 0; padding: 0;">
+    <% getData.map((item)=> { %>
+    <div style="height: 842px; width: 595px; margin-left: auto; margin-right: auto;">
+        <div
+            style="background-color: #D5E4FF; padding: 5rem; background-image: url('https://immediatedocs.s3.ap-south-1.amazonaws.com/InVoiceImages/MicrosoftTeams-image.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+
+            <div style="display: flex; justify-content: space-between;">
+
+                <div style="height: 40%; width: 50%;">
+                    <p><img src="<%= item.image %>" alt="Portfolio-img" style="width: 100px;"></p>
+                </div>
+
+                <div>
+                    <p
+                        style="color: #000; font-family: Inter; font-size: 10px; font-style: normal; font-weight: 400; line-height: normal;">
+                        Welcome to My Portfolio</p>
+                    <h2
+                        style="color: #000; font-family: Inter; font-size: 1.125rem; font-style: normal; font-weight: 600; line-height: normal;">
+                        Hi, I am <span style="color: #012970"><%= item.firstName %>   <%= item.lasttName %> </span><br /> <%= item.currentPosition %></h2>
+                    <p
+                        style="color: #1F70C1; font-size: 0.75rem; font-style: normal; font-weight: 500; line-height: normal; letter-spacing: 0.0075rem;">
+                        Notice period: <%= item.joiners %></p>
+                    <div style="margin-top: 10px; display: flex; justify-content: space-between;">
+                        <p>Email: <%= item.email %></p>
+                        <p style="margin-left: 7rem;">Mob: <%=item.mobileNumber %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <!-- About Me Section -->
+            <table>
+                <tr>
+                    <td>
+                        <h2
+                            style="color: #012970; font-family: Inter; font-size: 1.5rem; font-style: normal; font-weight: 500; line-height: normal; width: 20%; border-bottom: 16px solid #D5E4FF;">
+                            About Me
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p
+                            style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 400; line-height: 0.85rem;">
+                            <%= item.about %>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section>
+            <!-- Experience Section -->
+            <table>
+                <tr>
+                    <td>
+                        <h2
+                            style="color: #012970; font-family: Inter; font-size: 1.5rem; font-style: normal; font-weight: 500; line-height: normal; width: 46%; border-bottom: 16px solid #D5E4FF;">
+                            Experience
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+
+                    <!-- Experience details for each position -->
+                    <% item.workExperiences.map((exp)=>{  %>
+                    <td>
+                            <% const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"] %>
+                            <% const startDate = new Date(exp.startDate) %>
+                            <% const endDate = new Date(exp.endDate) %>
+                            <% const date = new Date(exp.startDate) %>
+                            <% const startFullYear = startDate.getFullYear() %>
+                            <% const endFullYear = endDate.getFullYear() %>
+                            <% const startMonth = monthNames[startDate.getMonth()] %>
+                            <% const checkCurrentlyWorkingOrNot = exp.isChecked === true ? "Currently Working" : monthNames[endDate.getMonth()]   %>
+                        <div style="padding: 2%;">
+                            <h2
+                                style="color: #5F47BF; font-family: Inter; font-size: 0.9rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                <%= exp.company_Name %>
+                            </h2>
+                            <h2
+                                style="color: #734669; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                <%= exp.title %>
+                            </h2>
+                            <h2
+                                style="color: #000; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 500; line-height: normal;">
+                                <%= startFullYear %> - <%= startMonth %> - <%= endFullYear %>-  <%= checkCurrentlyWorkingOrNot %>, <%= exp.location %>
+                            </h2>
+                            <p
+                                style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 400; line-height: 160%;">
+                                <%= exp.description %> 
+                            </p>
+                        </div>
+                        <!-- <div style="padding: 2%;">
+                            <h2
+                                style="color: #5F47BF; font-family: Inter; font-size: 0.9rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                Globelinktech.com
+                            </h2>
+                            <h2
+                                style="color: #734669; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                UI/UX Designer (intern)
+                            </h2>
+                            <h2
+                                style="color: #000; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 500; line-height: normal;">
+                                2022 March - 2023 June, Noida
+                            </h2>
+                            <p
+                                style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 400; line-height: 160%;">
+                                I have worked with this organization as a UI/UX designer (intern). My role was to design
+                                the low fidelity & high fidelity prototype, wireframes as well as the layouts which were
+                                assigned to me.
+                            </p>
+                        </div> -->
+                    </td>
+                    <% }) %>
+                    <!-- <td>
+                        <div style="padding: 2%;">
+                            <h2
+                                style="color: #5F47BF; font-family: Inter; font-size: 0.9rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                Globelinktech.com
+                            </h2>
+                            <h2
+                                style="color: #734669; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                UI/UX Designer (intern)
+                            </h2>
+                            <h2
+                                style="color: #000; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 500; line-height: normal;">
+                                2022 March - 2023 June, Noida
+                            </h2>
+                            <p
+                                style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 400; line-height: 160%;">
+                                I have worked with this organization as a UI/UX designer (intern). My role was to design
+                                the low fidelity & high fidelity prototype, wireframes as well as the layouts which were
+                                assigned to me.
+                            </p>
+                        </div>
+                        <div style="padding: 2%;">
+                            <h2
+                                style="color: #5F47BF; font-family: Inter; font-size: 0.9rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                Globelinktech.com
+                            </h2>
+                            <h2
+                                style="color: #734669; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 600; line-height: normal;">
+                                UI/UX Designer (intern)
+                            </h2>
+                            <h2
+                                style="color: #000; font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 500; line-height: normal;">
+                                2022 March - 2023 June, Noida
+                            </h2>
+                            <p
+                                style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 400; line-height: 160%;">
+                                I have worked with this organization as a UI/UX designer (intern). My role was to design
+                                the low fidelity & high fidelity prototype, wireframes as well as the layouts which were
+                                assigned to me.
+                            </p>
+                        </div>
+                    </td> -->
+
+                    <!-- Repeat the structure for other experiences -->
+
+                </tr>
+            </table>
+
+        </section>
+
+        <section>
+            <div>
+                <div>
+                    <h2
+                        style="color: #012970; font-family: Inter; font-size: 1.5rem; font-style: normal; font-weight: 500; line-height: normal; width: 18%; border-bottom: 16px solid #D5E4FF;">
+                        My Skills</h2>
+                </div>
+                <div>
+                    <div>
+                        <p
+                            style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 400; line-height: 0.85rem;">
+                            I Develop skills regularly to keep me updated. Most common methods for designing websites
+                            that work well on desktop is responsive and adaptive design</p>
+                    </div>
+                    <% item.skillmodels.map((skill)=>{  %>
+                    <table>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin: 4%;">
+                            <tr>
+                                <td>
+                                    <div
+                                        style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; background-color: #EDF4FF; border-radius: 5.53313rem; padding: 0 1rem;">
+                                        <% const skillImage = skill.skillLogo?skill.skillLogo:"" %>
+                                        <img src="<%= skillImage %>" alt="<%=skill.skillsName %>""
+                                            style="width: 30px; height: 30px; margin-right: 10px;">
+                                        <p><%=skill.skillsName %></p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </div>
+                    </table>a 
+                    <% }) %>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <div>
+                    <h2
+                        style="color: #012970; font-family: Inter; font-size: 1.5rem; font-style: normal; font-weight: 500; line-height: normal; width: 26%; border-bottom: 16px solid #D5E4FF;">
+                        Certifications</h2>
+                </div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <% item.lic_certis.map((lic)=>{ %>
+                                <% const issued_Date = new Date(lic.issued_Date) %>
+                                <% const expried_Date = new Date(lic.expried_Date) %>
+                            <div
+                                style="background-color: #EDF4FF; margin: 20px; padding: 20px; border-radius: .5rem; width: 15rem; height: 2.75rem;">
+                                <h2
+                                    style="color: #5F47BF; font-family: Inter; font-size: 0.75rem; font-style: normal; font-weight: 700; line-height: 0.90rem;">
+                                    <%= lic.company_Name %></h2>
+                                <h2
+                                    style="color: #5F47BF; font-family: Inter; font-size: 0.75rem; font-style: normal; font-weight: 500; line-height: 210%; letter-spacing: 0.009rem;">
+                                    <%= lic.courses %><span
+                                        style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 500; line-height: normal; letter-spacing: 0.0075rem;">( <%= issued_Date.getFullYear() %> - <%= expried_Date.getFullYear() %> )</span></h2>
+                            </div>
+                            <% }) %>   
+                        </td>
+
+                        <!-- <td>
+                            <div
+                                style="background-color: #EDF4FF; margin: 20px; padding: 20px; border-radius: .5rem; width: 15rem; height: 2.75rem;">
+                                <h2
+                                    style="color: #5F47BF; font-family: Inter; font-size: 0.75rem; font-style: normal; font-weight: 700; line-height: 0.90rem;">
+                                    User Experience Design</h2>
+                                <h2
+                                    style="color: #5F47BF; font-family: Inter; font-size: 0.75rem; font-style: normal; font-weight: 500; line-height: 210%; letter-spacing: 0.009rem;">
+                                    Simplilearn<span
+                                        style="color: rgba(0, 0, 0, 0.60); font-family: Inter; font-size: 0.65rem; font-style: normal; font-weight: 500; line-height: normal; letter-spacing: 0.0075rem;">(
+                                        2021-2022 )</span></h2>
+                            </div>
+                        </td> -->
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+    <% }) %>
+</body>
+
+</html>
